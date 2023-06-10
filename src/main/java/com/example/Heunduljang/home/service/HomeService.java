@@ -1,6 +1,6 @@
 package com.example.Heunduljang.home.service;
 
-import com.example.Heunduljang.home.dto.req.UserLocationReq;
+import com.example.Heunduljang.home.dto.request.UserLocationRequestDto;
 import com.example.Heunduljang.user.entity.User;
 import com.example.Heunduljang.user.repository.UserRepository;
 import java.util.List;
@@ -17,21 +17,21 @@ public class HomeService {
 	private final UserRepository userRepository;
 
 	@Transactional
-	public String putUserLocation(UserLocationReq userLocationReq) {
-		User user = userRepository.findById(userLocationReq.getUserId()).orElse(null);
+	public String putUserLocation(UserLocationRequestDto userLocationRequestDto) {
+		User user = userRepository.findByAppleId(userLocationRequestDto.getAppleId()).orElse(null);
 		if (user == null) {
 			return null;
 		}
-		user.setLatitude(userLocationReq.getLatitude());
+		user.setLatitude(userLocationRequestDto.getLatitude());
 		user.setLongitude(user.getLongitude());
 		return "success userId : " + user.getId() + " - putLocation";
 	}
 
 	@Transactional
-	public List<User> findUsersWithinRadius(Long id) {
+	public List<User> findUsersWithinRadius(String appleId) {
 		double radius = 2.0; // 반경 2km
 		double earthRadius = 6371; // 지구 반경 (단위: km)
-		User user = userRepository.findById(id).orElse(null);
+		User user = userRepository.findByAppleId(appleId).orElse(null);
 		if (user == null || user.getLatitude() == 0.0) {
 			return null;
 		}

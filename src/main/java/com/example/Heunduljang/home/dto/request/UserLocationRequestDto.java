@@ -1,8 +1,7 @@
-package com.example.Heunduljang.home.dto.req;
+package com.example.Heunduljang.home.dto.request;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import javax.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,10 +12,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Builder
-public class UserLocationReq {
+public class UserLocationRequestDto {
 
-	@ApiModelProperty(value = "유저 식별 Id")
-	private Long userId;
+	@ApiModelProperty(value = "유저 식별 애플아이디")
+	private String appleId;
 
 	@ApiModelProperty(value = "위도")
 	private double latitude;

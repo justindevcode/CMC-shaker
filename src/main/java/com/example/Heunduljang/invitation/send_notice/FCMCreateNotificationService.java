@@ -22,7 +22,7 @@ public class FCMCreateNotificationService {
 	private final FirebaseMessaging firebaseMessaging;
 
 	public String sendCreateNotificationByUser(User user) {
-		List<User> users = homeService.findUsersWithinRadius(user.getId());
+		List<User> users = homeService.findUsersWithinRadius(user.getAppleId());
 		for (User userIter : users) {
 			Notification notification = Notification.builder()
 				.setTitle("주변의 유저가 초대장을 보냈습니다!")
