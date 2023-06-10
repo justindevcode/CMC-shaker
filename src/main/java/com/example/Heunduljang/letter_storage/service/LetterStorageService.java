@@ -113,10 +113,21 @@ public class LetterStorageService {
 	public String patchInvitationEnter(Long invitationId, String appleId) {
 		User user = userRepository.findByAppleId(appleId).orElse(null);
 		Invitation invitation = invitationRepository.findById(invitationId).orElse(null);
+
 		UserInvitation userInvitation = userInvitationRepository.findByInvitationAndReceiverUser(
 				invitation, user)
 			.orElse(null);
 		userInvitation.setStatus(true);
+		List<UserInvitation> userInvitations = userInvitationRepository.findByReceiverUser(invitation.getReceiverUser());
+		int count = 0;
+		for (UserInvitation userInvitation1 : userInvitations) {
+			if(userInvitation1.isStatus()){
+				count++;
+			}
+		}
+		if (Integer.parseInt(invitation.getPersonnel()) == count) {
+			invitation.setStatus(true);
+		}
 		return "Success invitationId : " + invitationId + "Enter";
 
 
