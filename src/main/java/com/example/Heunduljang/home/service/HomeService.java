@@ -1,7 +1,6 @@
 package com.example.Heunduljang.home.service;
 
 import com.example.Heunduljang.home.dto.req.UserLocationRequestDto;
-import com.example.Heunduljang.home.dto.request.UserLocationRequestDto;
 import com.example.Heunduljang.user.entity.User;
 import com.example.Heunduljang.user.repository.UserRepository;
 import java.util.List;
