@@ -30,9 +30,9 @@ public class InvitationController {
      */
 
     @PostMapping
-    public BaseResponse<User> save(@Validated @RequestBody InvitationRequestDto invitationRequestDto, @AuthenticationPrincipal User user ){
-        invitationService.saveInvitation(user,invitationRequestDto);
-        return BaseResponse.onSuccess(user);
+    public BaseResponse<Invitation> save(@Validated @RequestBody InvitationRequestDto invitationRequestDto, @AuthenticationPrincipal User user ){
+        Invitation invitation = invitationService.saveInvitation(user, invitationRequestDto);
+        return BaseResponse.onSuccess(invitation);
     }
 
     /**

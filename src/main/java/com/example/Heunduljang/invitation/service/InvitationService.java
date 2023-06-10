@@ -15,7 +15,7 @@ public class InvitationService {
 
     private final InvitationRepository invitationRepository;
 
-    public User saveInvitation(User user, InvitationRequestDto invitationRequestDto){
+    public Invitation saveInvitation(User user, InvitationRequestDto invitationRequestDto){
 
         Invitation invitation = Invitation.builder()
                 .receiverUser(user)
@@ -25,8 +25,7 @@ public class InvitationService {
                 .kakaoLink(invitationRequestDto.getKakaoLink())
                 .build();
 
-        invitationRepository.save(invitation);
-        return user;
+        return invitationRepository.save(invitation);
     }
 
     public Invitation findInvitation(Long invitationId){
