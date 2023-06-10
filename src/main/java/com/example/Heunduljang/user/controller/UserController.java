@@ -3,10 +3,14 @@ package com.example.Heunduljang.user.controller;
 import com.example.Heunduljang.common.base.BaseResponse;
 import com.example.Heunduljang.user.dto.request.LoginRequestDto;
 import com.example.Heunduljang.user.dto.request.SignUpRequestDto;
+import com.example.Heunduljang.user.dto.request.UserInfoRequestDto;
 import com.example.Heunduljang.user.dto.response.SignUpResponseDto;
+import com.example.Heunduljang.user.dto.response.UserInfoResponseDto;
 import com.example.Heunduljang.user.service.UserService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -57,7 +61,40 @@ public class UserController {
     }
 
     /**
-     *
+     * 초대장알림 변경
      */
+    @ApiOperation(
+        value = "초대장알림 변경",
+        notes = "api요청하면 값이 반전됩니다."
+    )
+    @ApiImplicitParam(
+        name = "appleId"
+        , value = "유저 애플아이디"
+        , required = true
+    )
+    @PatchMapping("/change-notice/{appleId}")
+    public BaseResponse<String> changeNotice(@PathVariable String appleId) {
+        return BaseResponse.onSuccess(userService.changeNotice(appleId));
+    }
+
+    @ApiOperation(
+        value = "유저정보 조회",
+        notes = "유저정보 조회 API"
+    )
+    @GetMapping("/{appleId}")
+    private BaseResponse<UserInfoResponseDto> getUserIndo(@PathVariable String appleId) {
+        return BaseResponse.onSuccess(userService.getUserIndo(appleId));
+    }
+
+    @ApiOperation(
+        value = "유저정보 수정",
+        notes = "유저정보를 수정하는 API"
+    )
+    @PatchMapping("/change-info/{appleId}")
+    public BaseResponse<UserInfoResponseDto> patchUserInfo(@PathVariable String appleId,
+        @RequestBody
+        UserInfoRequestDto userInfoRequestDto) {
+        return BaseResponse.onSuccess(userService.patchUserInfo(appleId, userInfoRequestDto));
+    }
 
 }

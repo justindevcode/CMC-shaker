@@ -25,6 +25,7 @@ public class InvitationController {
     /**
      * 초대장 만들기
      */
+
     @PostMapping
     public BaseResponse<User> save(@Validated @RequestBody InvitationRequestDto invitationRequestDto, @AuthenticationPrincipal User user ){
         invitationService.saveInvitation(user,invitationRequestDto);
