@@ -1,6 +1,5 @@
 package com.example.Heunduljang.user.service;
 
-import com.example.Heunduljang.common.base.BaseException;
 import com.example.Heunduljang.common.exception.BadRequestException;
 import com.example.Heunduljang.user.dto.request.SignUpRequestDto;
 import com.example.Heunduljang.user.dto.response.SignUpResponseDto;
