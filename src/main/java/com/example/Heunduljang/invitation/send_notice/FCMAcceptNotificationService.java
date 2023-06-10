@@ -18,6 +18,9 @@ public class FCMAcceptNotificationService {
 	private final FirebaseMessaging firebaseMessaging;
 
 	public String sendCreateNotificationByUser(User createUser, User acceptUser) {
+		if(!acceptUser.isNotice()){
+			return "알림을 수신하지 않는 유저입니다.";
+		}
 
 			Notification notification = Notification.builder()
 				.setTitle("주변의 유저가 초대를 수락했습니다!")

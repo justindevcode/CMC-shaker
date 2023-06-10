@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(tags = "알림 테스트")
+@Api(tags = "test api")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/notice_test")

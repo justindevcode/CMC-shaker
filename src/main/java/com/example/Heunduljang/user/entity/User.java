@@ -56,6 +56,9 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "profile_image")
     private String profileImage;
 
+    @Column(name = "notice")
+    private boolean notice;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

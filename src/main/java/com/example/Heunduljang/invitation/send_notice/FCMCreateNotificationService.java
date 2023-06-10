@@ -24,6 +24,9 @@ public class FCMCreateNotificationService {
 	public String sendCreateNotificationByUser(User user) {
 		List<User> users = homeService.findUsersWithinRadius(user.getAppleId());
 		for (User userIter : users) {
+			if(!userIter.isNotice()){
+				continue;
+			}
 			Notification notification = Notification.builder()
 				.setTitle("주변의 유저가 초대장을 보냈습니다!")
 				.setBody(user.getNickname() + "님의 초대 참가하기!")

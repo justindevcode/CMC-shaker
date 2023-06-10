@@ -1,6 +1,7 @@
 package com.example.Heunduljang.user_invitation.entity;
 
 import com.example.Heunduljang.common.base.BaseEntity;
+import com.example.Heunduljang.invitation.entity.Invitation;
 import com.example.Heunduljang.user.entity.User;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
@@ -25,8 +26,14 @@ public class UserInvitation extends BaseEntity {
     private Long userInvitationId;
 
     @ManyToOne
+    @JoinColumn(name = "invitation_id")
+    private Invitation invitation;
+
+    @ManyToOne
     @JoinColumn(name = "creator_user_id")
     private User creatorUser;
+
+
 
     @ManyToOne
     @JoinColumn(name = "receiver_user_id")
