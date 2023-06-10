@@ -29,6 +29,17 @@ spring:
     activate:
       on-profile: common
 
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://demo-backend-db.civ6pe384nrx.ap-northeast-2.rds.amazonaws.com:3306/demo_app_backend
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
 # 공통으로 사용할 설정값
 
 ---
@@ -37,16 +48,7 @@ spring:
   config:
     activate:
       on-profile: local
-  datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://demo-backend-db.civ6pe384nrx.ap-northeast-2.rds.amazonaws.com:3306
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
 
-  jpa:
-    hibernate:
-      ddl-auto: create
-    show-sql: true
 
 ---
 
