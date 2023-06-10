@@ -37,7 +37,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none # create
     show-sql: true
 
 # 공통으로 사용할 설정값
