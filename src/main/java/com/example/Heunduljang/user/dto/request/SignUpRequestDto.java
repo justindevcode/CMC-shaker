@@ -1,5 +1,6 @@
 package com.example.Heunduljang.user.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
@@ -20,6 +21,7 @@ public class SignUpRequestDto {
 
     @ApiModelProperty(value = "애플 아이디")
     @NotBlank(message = "애플 아이디는 값이 있어야 합니다.")
+    @JsonProperty("apple_id")
     private String appleId;
 
     @ApiModelProperty(value = "닉네임")
@@ -36,6 +38,7 @@ public class SignUpRequestDto {
 
     @ApiModelProperty(value = "디바이스 아이디")
     @NotBlank(message = "디바이스 아이디 값이 있어야 합니다.")
+    @JsonProperty("device_id")
     private String deviceId;
 
 

@@ -1,5 +1,6 @@
 package com.example.Heunduljang.user.entity;
 
+import com.example.Heunduljang.common.base.BaseEntity;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -19,7 +20,7 @@ import java.util.Collection;
 @NoArgsConstructor
 @DynamicInsert
 @DynamicUpdate
-public class User implements UserDetails {
+public class User extends BaseEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
