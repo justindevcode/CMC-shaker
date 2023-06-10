@@ -34,7 +34,7 @@ spring:
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://demo-backend-db.civ6pe384nrx.ap-northeast-2.rds.amazonaws.com:3306/demo_app_backend2?characterEncoding=UTF-8
+    url: jdbc:mariadb://demo-backend-db.civ6pe384nrx.ap-northeast-2.rds.amazonaws.com:3306/demo_app_backend?characterEncoding=UTF-8
     username: ${SPRING_DATASOURCE_USERNAME}
     password: ${SPRING_DATASOURCE_PASSWORD}
 
