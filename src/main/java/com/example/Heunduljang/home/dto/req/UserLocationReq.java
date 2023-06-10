@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class UserLocationReq {
 
 	@ApiModelProperty(value = "유저 식별 Id")
-	private Long userId;
+	private String appleId;
 
 	@ApiModelProperty(value = "위도")
 	private double latitude;

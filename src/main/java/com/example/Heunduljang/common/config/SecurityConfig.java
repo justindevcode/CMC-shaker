@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web)  {
-        web.ignoring().antMatchers("/v3/api-docs", "/swagger*/**" );
+        web.ignoring().antMatchers("/v3/api-docs", "/swagger*/**","/users/signUp" );
     }
 
     @Override
@@ -38,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/v3/api-docs").permitAll()
                 .antMatchers("/swagger*/**").permitAll()
+                .antMatchers("/users/signUp").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(exceptionFilter, AuthenticationFilter.class);
