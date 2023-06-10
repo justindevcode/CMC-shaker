@@ -1,5 +1,6 @@
 package com.example.Heunduljang.user_invitation.entity;
 
+import com.example.Heunduljang.common.base.BaseEntity;
 import com.example.Heunduljang.user.entity.User;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
@@ -16,7 +17,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @DynamicInsert
 @DynamicUpdate
-public class UserInvitation {
+public class UserInvitation extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

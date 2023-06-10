@@ -1,6 +1,7 @@
 package com.example.Heunduljang.invitation.entity;
 
 
+import com.example.Heunduljang.common.base.BaseEntity;
 import com.example.Heunduljang.user.entity.User;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
@@ -17,7 +18,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @DynamicInsert
 @DynamicUpdate
-public class Invitation {
+public class Invitation extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +42,7 @@ public class Invitation {
     private String reason;
 
     @Column(name = "personnel")
-    private int personnel;
+    private String personnel;
 
     @Column(name = "invited_count")
     private int invitedCount;
