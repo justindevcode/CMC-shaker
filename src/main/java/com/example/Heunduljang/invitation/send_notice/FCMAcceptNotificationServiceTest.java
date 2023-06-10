@@ -23,7 +23,7 @@ public class FCMAcceptNotificationServiceTest {
 				.setBody("a testuser" + "님이 참가하셨습니다!")
 				.build();
 			Message message = Message.builder()
-				.setToken("dTI4bXe9qUzBqgb4zxwpGr:APA91bFoeHoATZM4kUhuZpzHrW5GkgiyAdTJR-BkK_Jo0GLbvLC8eZm4hDs9b41MgImeGKNDwUw7fuR6OgdygSP5oUn0R9pnJ7a9BAFm5O_ha5QkjnazbYZ5Rzjb3qUr70dUtXGzEHbV")
+				.setToken("dkjmVPjeOk7bhiPfbVuJSM:APA91bF-SwQimyN9SkVh5SuWNkA4-mC3a0sMRG_95S5gAmLU8i-RZqOTzFTn5PDh6Sme72r2a2yf2BqujpXpzk-h5dYQdaHJiDJ6P9zx0SKv2ivBKd4yyCXUXop4IKvGCijMnbD-WWeK")
 				.setNotification(notification)
 				.build();
 
