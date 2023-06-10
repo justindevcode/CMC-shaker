@@ -2,7 +2,6 @@ package com.example.Heunduljang.home.dto.req;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import javax.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Builder
-public class UserLocationReq {
+public class UserLocationRequestDto {
 
 	@ApiModelProperty(value = "유저 식별 Id")
 	private String appleId;
