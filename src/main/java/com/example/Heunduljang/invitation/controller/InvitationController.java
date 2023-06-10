@@ -49,4 +49,14 @@ public class InvitationController {
         Invitation savedInvitation= invitationService.saveComment(invitation,queryAnswer);
         return BaseResponse.onSuccess(savedInvitation);
     }
+
+    @GetMapping("/send/{invitationId}")
+    public BaseResponse<String> send(@PathVariable(value = "invitationId",required = false)
+                                             @NotNull(message = "초대장 ID를 입력해주세요.")
+                                             Long invitationId){
+        invitationService.sendInvitation(invitationId);
+        return BaseResponse.onSuccess("성공하였습니다.");
+    }
+
+
 }

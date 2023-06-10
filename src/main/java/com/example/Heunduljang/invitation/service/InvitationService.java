@@ -42,17 +42,25 @@ public class InvitationService {
 
     public Invitation saveComment(Invitation invitation, ChatGPTResponse queryAnswer) {
         invitation.setComment(queryAnswer.getChoices().get(0).getMessage().getContent());
-        List<User> usersWithinRadius = homeService.findUsersWithinRadius(
-            invitation.getReceiverUser().getAppleId());
-        for (User users : usersWithinRadius) {
-            UserInvitation userInvitation = UserInvitation.builder()
-                .invitation(invitation)
-                .creatorUser(invitation.getReceiverUser())
-                .receiverUser(users)
-                .status(false)
-                .build();
-            userInvitationRepository.save(userInvitation);
-        }
         return invitationRepository.save(invitation);
     }
+
+    public void sendInvitation(Long invitationId){
+        Invitation invitation = invitationRepository.findById(invitationId).orElseThrow(() -> new NotFoundException("초대장을 찾을 수 없습니다."));
+        List<User> usersWithinRadius = homeService.findUsersWithinRadius(
+                invitation.getReceiverUser().getAppleId());
+        for (User users : usersWithinRadius) {
+            UserInvitation userInvitation = UserInvitation.builder()
+                    .invitation(invitation)
+                    .creatorUser(invitation.getReceiverUser())
+                    .receiverUser(users)
+                    .status(false)
+                    .build();
+            userInvitationRepository.save(userInvitation);
+        }
+    }
+
+
+
+
 }
