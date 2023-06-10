@@ -21,6 +21,7 @@ public class FCMCreateNotificationService {
 	private final HomeService homeService;
 	private final FirebaseMessaging firebaseMessaging;
 
+
 	public String sendCreateNotificationByUser(User user) {
 		List<User> users = homeService.findUsersWithinRadius(user.getAppleId());
 		for (User userIter : users) {

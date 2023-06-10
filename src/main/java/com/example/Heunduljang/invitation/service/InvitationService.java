@@ -6,6 +6,7 @@ import com.example.Heunduljang.home.service.HomeService;
 import com.example.Heunduljang.invitation.dto.request.InvitationRequestDto;
 import com.example.Heunduljang.invitation.entity.Invitation;
 import com.example.Heunduljang.invitation.repository.InvitationRepository;
+import com.example.Heunduljang.invitation.send_notice.FCMCreateNotificationService;
 import com.example.Heunduljang.user.entity.User;
 import com.example.Heunduljang.user.service.UserService;
 import com.example.Heunduljang.user_invitation.entity.UserInvitation;
@@ -21,6 +22,9 @@ public class InvitationService {
     private final InvitationRepository invitationRepository;
     private final HomeService homeService;
     private final UserInvitationRepository userInvitationRepository;
+
+    private final FCMCreateNotificationService fcmCreateNotificationService;
+
 
     public Invitation saveInvitation(User user, InvitationRequestDto invitationRequestDto){
 
@@ -58,6 +62,7 @@ public class InvitationService {
                     .build();
             userInvitationRepository.save(userInvitation);
         }
+        fcmCreateNotificationService.sendCreateNotificationByUser(invitation.getReceiverUser());
     }
 
 

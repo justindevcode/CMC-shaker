@@ -2,6 +2,7 @@ package com.example.Heunduljang.letter_storage.service;
 
 import com.example.Heunduljang.invitation.entity.Invitation;
 import com.example.Heunduljang.invitation.repository.InvitationRepository;
+import com.example.Heunduljang.invitation.send_notice.FCMAcceptNotificationService;
 import com.example.Heunduljang.letter_storage.dto.response.InvitationListResponseDto;
 import com.example.Heunduljang.letter_storage.dto.response.InvitationResponseDto;
 import com.example.Heunduljang.letter_storage.dto.response.UserByInvitationResponseDto;
@@ -26,6 +27,8 @@ public class LetterStorageService {
 	private final InvitationRepository invitationRepository;
 
 	private final UserInvitationRepository userInvitationRepository;
+
+	private final FCMAcceptNotificationService fcmAcceptNotificationService;
 	@Transactional
 	public List<InvitationListResponseDto> getSendInvitationByUser(String appleId) {
 		User user = userRepository.findByAppleId(appleId).orElse(null);
@@ -128,10 +131,9 @@ public class LetterStorageService {
 		if (Integer.parseInt(invitation.getPersonnel()) == count) {
 			invitation.setStatus(true);
 		}
+		fcmAcceptNotificationService.sendCreateNotificationByUser(invitation.getReceiverUser(),
+			user);
 		return "Success invitationId : " + invitationId + "Enter";
-
-
-
 
 	}
 
