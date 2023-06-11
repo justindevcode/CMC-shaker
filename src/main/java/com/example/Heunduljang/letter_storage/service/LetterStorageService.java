@@ -31,7 +31,9 @@ public class LetterStorageService {
 	private final FCMAcceptNotificationService fcmAcceptNotificationService;
 	@Transactional
 	public List<InvitationListResponseDto> getSendInvitationByUser(String appleId) {
+		log.info("error");
 		User user = userRepository.findByAppleId(appleId).orElse(null);
+		log.info("error");
 		if (user == null) {
 			return null;
 		}
@@ -53,16 +55,18 @@ public class LetterStorageService {
 
 	@Transactional
 	public List<InvitationListResponseDto> getReceiveInvitationByUser(String appleId) {
+		log.info("1error");
 		User user = userRepository.findByAppleId(appleId).orElse(null);
+		log.info("error");
 		if (user == null) {
 			return null;
 		}
 		List<UserInvitation> userInvitations = userInvitationRepository.findByReceiverUser(user);
 		List<Invitation> invitations = new ArrayList<>();
 		for (UserInvitation userInvitation : userInvitations) {
-			Invitation invitation = invitationRepository.findByReceiverUser(
-				userInvitation.getCreatorUser()).orElse(null);
-			invitations.add(invitation);
+			List<Invitation> invitation = invitationRepository.findByReceiverUser(
+				userInvitation.getCreatorUser());
+			invitations.add(invitation.get(0));
 		}
 		List<InvitationListResponseDto> invitationListResponseDtos = new ArrayList<>();
 		for (Invitation invitation : invitations) {

@@ -10,5 +10,5 @@ public interface InvitationRepository extends JpaRepository<Invitation, Long> {
 
 	List<Invitation> findByReceiverUser_AppleId(String appleId);
 
-	Optional<Invitation> findByReceiverUser(User user);
+	List<Invitation> findByReceiverUser(User user);
 }
