@@ -22,18 +22,15 @@ public class HomeService {
 			return null;
 		}
 		user.setLatitude(userLocationRequestDto.getLatitude());
-		user.setLongitude(user.getLongitude());
+		user.setLongitude(userLocationRequestDto.getLongitude());
 		return "success userId : " + user.getId() + " - putLocation";
 	}
 
-	@Transactional
 	public List<User> findUsersWithinRadius(String appleId) {
 		double radius = 2.0; // 반경 2km
 		double earthRadius = 6371; // 지구 반경 (단위: km)
 		User user = userRepository.findByAppleId(appleId).orElse(null);
-		if (user == null || user.getLatitude() == 0.0) {
-			return null;
-		}
+
 
 		double latitude = user.getLatitude();
 		double longitude = user.getLongitude();
@@ -49,6 +46,11 @@ public class HomeService {
 
 		// 스프링 Data JPA를 사용하여 위도 경도 범위 내의 유저 조회
 		return userRepository.findByLatitudeBetweenAndLongitudeBetween(minLatitude, maxLatitude, minLongitude, maxLongitude);
+
+	}
+
+	public List<User> test(String id) {
+		return userRepository.findAll();
 	}
 }
 

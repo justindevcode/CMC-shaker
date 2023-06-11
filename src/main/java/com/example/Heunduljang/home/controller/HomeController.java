@@ -4,6 +4,7 @@ import com.example.Heunduljang.common.base.BaseResponse;
 import com.example.Heunduljang.home.dto.request.UserLocationRequestDto;
 import com.example.Heunduljang.home.dto.response.UserHomeResponseDto;
 import com.example.Heunduljang.home.service.HomeService;
+
 import com.example.Heunduljang.user.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -11,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Api(tags="홈화면")
 @RequiredArgsConstructor
-@Validated
 @RequestMapping("/home")
 @RestController
 public class HomeController {
@@ -41,15 +42,13 @@ public class HomeController {
 		value = "유저기준 주변 유저위치검색",
 		notes = "주변 유저위치검색"
 	)
-	@ApiImplicitParam(
-		name = "appleId"
-		, value = "유저식별 애플아이디"
-		, required = true
-	)
 	@GetMapping("/{appleId}")
 	private BaseResponse<List<UserHomeResponseDto>> findUsersWithinRadius(
 		@PathVariable String appleId) {
-		List<User> user = homeService.findUsersWithinRadius(appleId);
+
+
+		List<User> user = homeService.test(appleId);//findUsersWithinRadius(appleId);
+
 		List<UserHomeResponseDto> userHomeResponseDtos = new ArrayList<>();
 		for (User user1 : user) {
 			UserHomeResponseDto userHomeResponseDto = UserHomeResponseDto.builder()
@@ -63,4 +62,6 @@ public class HomeController {
 		}
 		return BaseResponse.onSuccess(userHomeResponseDtos);
 	}
+
+
 }
