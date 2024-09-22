@@ -3,6 +3,9 @@
 |---|---|
 |![해커톤 발표자료-12](https://github.com/user-attachments/assets/f162969a-34b1-4f91-a39a-8128936626a3)|![해커톤 발표자료-18](https://github.com/user-attachments/assets/8a81631e-839a-4925-85f9-31b66e533dbf)|
 
+### Period: 2023/06/10 > 2023/06/11
+### stacks : Java, Spring, JPA, MariaDB, Firebase 클라우드 메시징
+
 # Firebase 클라우드 메시징 사용 경험
 Firebase 클라우드 메시징을 통해 실시간 푸시 알림 시스템을 구축함으로써, 모바일과 웹 애플리케이션의 사용자 참여도를 높이고, 메시지 전송의 효율성과 신뢰성을 개선
 
